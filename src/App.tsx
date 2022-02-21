@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Mathbox } from 'mathbox-react'
+import 'mathbox/build/mathbox.css'
 import './App.css';
 
 function App() {
@@ -10,9 +11,8 @@ function App() {
     return () => setIsMounted(false)
   }, [])
   return (
-    <div className="App">
-      <Mathbox element={container}>
-      </Mathbox>
+    <div ref={container} className="App">
+      {container.current && <Mathbox element={container.current} />}
     </div>
   );
 }
